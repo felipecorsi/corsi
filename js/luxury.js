@@ -250,7 +250,8 @@ function wishRender() {
 
 function accountSubmit(e) {
   e.preventDefault();
-  document.getElementById('acct-thanks').style.display = 'block';
+  var acctThanks = document.getElementById('acct-thanks');
+  if (acctThanks) acctThanks.style.display = 'block';
   return false;
 }
 
