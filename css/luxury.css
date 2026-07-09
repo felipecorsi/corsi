@@ -1289,8 +1289,13 @@
       .h-right a[href="/wishlist"] { display: none; }
     }
 
-    /* phones: film inset with margins, whole frame visible */
+    /* phones: film inset, gently cropped to a tall frame, no letterbox */
     @media (max-width: 640px) {
       .film { width: calc(100vw - 40px); margin: 0 auto; }
-      .film video { width: 100%; height: auto; min-height: 0; aspect-ratio: 1920 / 1012; }
+      .film video { width: 100%; height: 96vw; min-height: 0; object-fit: cover; }
+    }
+    /* never show the iOS overlay play glyph */
+    video::-webkit-media-controls-start-playback-button {
+      display: none !important;
+      -webkit-appearance: none;
     }
