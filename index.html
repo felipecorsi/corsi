@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORSI | Maison of Timeless Apparel</title>
+  <meta name="description" content="Corsi. Luxury apparel for women and men. Timeless elegance, uncompromising quality.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="https://use.typekit.net/ozh8iey.css">
+  <link rel="stylesheet" href="css/luxury.css">
+</head>
+<body>
+
+  <header id="top-bar">
+    <div class="h-left">
+      <button class="tb-item" onclick="menuToggle(true)" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17M3.5 12h17M3.5 17.5h17"/></svg>
+        <span class="tb-label">Menu</span>
+      </button>
+      <button class="tb-item" onclick="searchToggle(true)" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.75"/><path d="M15.6 15.6 21 21"/></svg>
+        <span class="tb-label">Search</span>
+      </button>
+    </div>
+    <a class="wordmark" href="index.html">CORSI</a>
+    <div class="h-right">
+      <a class="tb-item" href="wishlist.html" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </a>
+      <a class="tb-item" href="account.html" aria-label="Account">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.2" r="3.7"/><path d="M4.8 20c1.4-3.5 4-5.3 7.2-5.3s5.8 1.8 7.2 5.3"/></svg>
+      </a>
+      <button class="tb-item" onclick="bagToggle(true)" aria-label="Shopping bag">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 8.6h13.6l-1 11.9H6.2l-1-11.9Z"/><path d="M8.6 11.2V7c0-2 1.5-3.4 3.4-3.4S15.4 5 15.4 7v4.2"/></svg>
+        <span class="bag-n" id="bag-n">0</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="scrim" onclick="menuToggle(false); bagToggle(false); searchToggle(false)"></div>
+  <aside class="drawer" id="menu-drawer">
+    <button class="tb-item drawer-close" onclick="menuToggle(false)" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13"/></svg>
+      <span>Close</span>
+    </button>
+    <nav class="drawer-nav">
+      <a href="index.html">Home</a>
+      <a href="mens.html">Men's</a>
+      <a href="womens.html">Women's</a>
+      <a href="packaging.html">Packaging</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="giftcard.html">Gift Card</a>
+    </nav>
+    <div class="drawer-sep"></div>
+    <nav class="drawer-sub">
+      <a href="shipping-returns.html">Shipping &amp; Returns</a>
+      <a href="mailto:support@felipecorsi.com?subject=Order%20status">My Orders</a>
+    </nav>
+    <div class="drawer-foot">Client Services &middot; support@felipecorsi.com</div>
+  </aside>
+
+  <aside class="bagpanel" id="bagpanel">
+    <button class="tb-item drawer-close" onclick="bagToggle(false)" aria-label="Close bag">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13"/></svg>
+      <span>Close</span>
+    </button>
+    <div class="eyebrow bag-title">Your Bag</div>
+    <div id="bag-items"></div>
+    <p id="bag-empty">Your bag is empty.</p>
+    <div id="bag-foot">
+      <div class="bag-subtotal"><span>Subtotal</span><span id="bag-subtotal">$0.00</span></div>
+      <button class="cta-solid" onclick="bagCheckout()">Checkout by Email</button>
+      <p class="bag-note">Orders are confirmed by email while the maison prepares its boutique.</p>
+    </div>
+  </aside>
+
+  <aside class="searchpanel" id="searchpanel">
+    <div class="search-top">
+      <span></span>
+      <a class="wordmark" href="index.html">CORSI</a>
+      <button class="tb-item search-close" onclick="searchToggle(false)" aria-label="Close search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 5.5l13 13M18.5 5.5l-13 13"/></svg>
+      </button>
+    </div>
+    <div class="searchpanel-inner">
+      <div class="search-pill">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.75"/><path d="M15.6 15.6 21 21"/></svg>
+        <input id="search-input" type="text" placeholder="Search the collection" autocomplete="off" aria-label="Search">
+      </div>
+      <div class="search-trending">
+        <span class="trend-label">Trending</span>
+        <button class="trend" onclick="searchSet('tiger')">Tiger</button>
+        <button class="trend" onclick="searchSet('crewneck')">Crewneck</button>
+        <button class="trend" onclick="searchSet('pima')">Pima</button>
+        <button class="trend" onclick="searchSet('floral')">Floral</button>
+      </div>
+      <div class="search-section" id="search-label">The Collection</div>
+      <div class="search-grid" id="search-results"></div>
+    </div>
+  </aside>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+  </section>
+
+  <!-- ICONS -->
+  <section class="icons" id="icons">
+    <div class="eyebrow reveal">The Icons</div>
+    <h2 class="reveal d1">Made to last</h2>
+    <div class="icons-grid">
+      <a class="icon-card reveal" href="product-sinopoli.html">
+        <div class="icon-media">
+          <button class="card-heart" data-name="Sinopoli Crest Tee" aria-label="Save Sinopoli Crest Tee to wishlist" onclick="return heartTap(event, 'Sinopoli Crest Tee', 280, 'images/card-sinopoli.jpg', 'product-sinopoli.html')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="images/card-sinopoli.jpg" loading="lazy" decoding="async" alt="Corsi Sinopoli Crest Supima T-Shirt">
+          <div class="icon-veil"><span>Discover</span></div>
+        </div>
+        <h3>Sinopoli Crest Tee</h3>
+        <div class="price">Coming Soon</div>
+      </a>
+      <a class="icon-card reveal d1" href="product-tiger.html">
+        <div class="icon-media">
+          <button class="card-heart" data-name="The Calligraphy Tiger" aria-label="Save The Calligraphy Tiger to wishlist" onclick="return heartTap(event, 'The Calligraphy Tiger', 280, 'images/card-tiger.jpg', 'product-tiger.html')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="images/card-tiger.jpg" loading="lazy" decoding="async" alt="Corsi Arabic Calligraphy Tiger T-Shirt">
+          <div class="icon-veil"><span>Discover</span></div>
+        </div>
+        <h3>The Calligraphy Tiger</h3>
+        <div class="price">Coming Soon</div>
+      </a>
+      <a class="icon-card reveal d2" href="product-tennis.html">
+        <div class="icon-media">
+          <button class="card-heart" data-name="Tennis Crewneck" aria-label="Save Tennis Crewneck to wishlist" onclick="return heartTap(event, 'Tennis Crewneck', 450, 'images/card-tennis.jpg', 'product-tennis.html')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="images/card-tennis.jpg" loading="lazy" decoding="async" alt="Corsi Tennis Crewneck in natural organic cotton">
+          <div class="icon-veil"><span>Discover</span></div>
+        </div>
+        <h3>Tennis Crewneck</h3>
+        <div class="price">Coming Soon</div>
+      </a>
+      <a class="icon-card reveal d3" href="product-floral.html">
+        <div class="icon-media">
+          <button class="card-heart" data-name="C Icon Floral Tee" aria-label="Save C Icon Floral Tee to wishlist" onclick="return heartTap(event, 'C Icon Floral Tee', 280, 'images/card-floral.jpg', 'product-floral.html')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="images/card-floral.jpg" loading="lazy" decoding="async" alt="C Icon Floral Supima Cotton T-Shirt">
+          <div class="icon-veil"><span>Discover</span></div>
+        </div>
+        <h3>C Icon Floral Tee</h3>
+        <div class="price">Coming Soon</div>
+      </a>
+    </div>
+    <a class="line-link reveal d2" href="mens.html">Shop the Collection</a>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience" id="experience">
+    <div class="film">
+      <video id="film" muted loop playsinline preload="auto">
+        <source src="video/unboxing-film.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- EDITORIAL 1 -->
+  <section class="editorial" id="collection">
+    <div class="editorial-media reveal">
+      <img src="images/editorial-model.jpg" loading="lazy" decoding="async" alt="Corsi Arabic Calligraphy T-shirt worn by a model">
+    </div>
+    <div class="editorial-copy">
+      <div class="eyebrow reveal">The Signature</div>
+      <h2 class="reveal d1">The Calligraphy<br>Tiger</h2>
+      <p class="reveal d2">Supima cotton, cut with intent. A tiger drawn in the strokes of Arabic calligraphy, an homage to the art of handwriting, worn close to the chest.</p>
+      <a class="line-link reveal d3" href="product-tiger.html">Explore the piece</a>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section class="join" id="join">
+    <div class="eyebrow reveal">The First Collection</div>
+    <h2 class="reveal d1">Join the Waitlist</h2>
+    <p class="reveal d2">Be the first to know when the collection releases. Nothing more.</p>
+    <form class="reveal d3" onsubmit="return joinHouse(event)">
+      <input type="email" id="join-email" placeholder="Email address" aria-label="Email address" required>
+      <button type="submit">Join</button>
+    </form>
+    <p class="thanks" id="join-thanks">Thank you. You are on the list.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="wordmark" href="index.html">CORSI</a>
+        <p>Timeless elegance, uncompromising quality, sustainable practice.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="mens.html">Men's</a></li>
+          <li><a href="womens.html">Women's</a></li>
+          <li><a href="giftcard.html">Gift Card</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>The House</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="packaging.html">Packaging</a></li>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Care</h4>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="shipping-returns.html">Shipping &amp; Returns</a></li>
+          <li><a href="mailto:support@felipecorsi.com">support@felipecorsi.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Corsi LLC</span>
+      <div class="socials">
+        <a href="https://instagram.com/corsi_co/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/Corsi-106458008699255" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/company/80231894/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/luxury.js"></script>
+</body>
+</html>
