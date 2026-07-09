@@ -16,12 +16,12 @@ addEventListener('keydown', function (e) {
 /* ---------- search ---------- */
 
 var CATALOG = [
-  { name: 'Sinopoli Crest Tee', price: 280, page: 'product-sinopoli.html', img: 'images/card-sinopoli.jpg', tags: 'sinopoli crest supima cotton t-shirt tee white italy heritage men women', stock: false },
-  { name: 'The Calligraphy Tiger', price: 280, page: 'product-tiger.html', img: 'images/card-tiger.jpg', tags: 'arabic calligraphy tiger supima cotton t-shirt tee white signature men women', stock: false },
-  { name: 'Tennis Crewneck', price: 450, page: 'product-tennis.html', img: 'images/card-tennis.jpg', tags: 'tennis crewneck sweatshirt sweater organic cotton natural cream racket men women', stock: false },
-  { name: 'C Icon Pima Tee', price: 260, page: 'product-pima.html', img: 'images/card-pima.jpg', tags: 'c icon pima cotton t-shirt tee rose pink men women', stock: false },
-  { name: 'C Icon Royal Purple Tee', price: 260, page: 'product-purple.html', img: 'images/card-purple.jpg', tags: 'c icon royal purple cotton t-shirt tee violet men women', stock: false },
-  { name: 'C Icon Floral Tee', price: 280, page: 'product-floral.html', img: 'images/card-floral.jpg', tags: 'c icon floral flower supima cotton t-shirt tee white men women', stock: false }
+  { name: 'Sinopoli Crest Tee', price: 280, page: '/product-sinopoli', img: 'images/card-sinopoli.jpg', tags: 'sinopoli crest supima cotton t-shirt tee white italy heritage men women', stock: false },
+  { name: 'The Calligraphy Tiger', price: 280, page: '/product-tiger', img: 'images/card-tiger.jpg', tags: 'arabic calligraphy tiger supima cotton t-shirt tee white signature men women', stock: false },
+  { name: 'Tennis Crewneck', price: 450, page: '/product-tennis', img: 'images/card-tennis.jpg', tags: 'tennis crewneck sweatshirt sweater organic cotton natural cream racket men women', stock: false },
+  { name: 'C Icon Pima Tee', price: 260, page: '/product-pima', img: 'images/card-pima.jpg', tags: 'c icon pima cotton t-shirt tee rose pink men women', stock: false },
+  { name: 'C Icon Royal Purple Tee', price: 260, page: '/product-purple', img: 'images/card-purple.jpg', tags: 'c icon royal purple cotton t-shirt tee violet men women', stock: false },
+  { name: 'C Icon Floral Tee', price: 280, page: '/product-floral', img: 'images/card-floral.jpg', tags: 'c icon floral flower supima cotton t-shirt tee white men women', stock: false }
 ];
 
 function searchToggle(open) {
