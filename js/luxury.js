@@ -258,7 +258,7 @@ function accountSubmit(e) {
 /* ---------- forms ---------- */
 
 function formPost(payload, onFail) {
-  fetch('https://formsubmit.co/ajax/support@felipecorsi.com', {
+  fetch('https://formsubmit.co/ajax/felipe.corsi@outlook.com', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify(payload)
