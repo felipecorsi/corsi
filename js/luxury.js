@@ -257,14 +257,24 @@ function accountSubmit(e) {
 
 /* ---------- forms ---------- */
 
+function formPost(payload, onFail) {
+  fetch('https://formsubmit.co/ajax/support@felipecorsi.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function (r) { if (!r.ok) throw new Error(r.status); })
+    .catch(onFail);
+}
+
 function joinHouse(e) {
   e.preventDefault();
   var em = document.getElementById('join-email').value.trim();
   if (!em) return false;
-  document.getElementById('join-thanks').style.display = 'block';
+  var thanks = document.getElementById('join-thanks');
+  thanks.style.display = 'block';
   document.getElementById('join-email').value = '';
-  location.href = 'mailto:support@felipecorsi.com?subject=' + encodeURIComponent('Waitlist')
-    + '&body=' + encodeURIComponent('Please add ' + em + ' to the Corsi waitlist.');
+  formPost({ email: em, _subject: 'Corsi waitlist: ' + em, _captcha: 'false', _template: 'table' },
+    function () { thanks.textContent = 'Please email support@felipecorsi.com to join the list.'; });
   return false;
 }
 
@@ -273,9 +283,15 @@ function contactSend(e) {
   var name = document.getElementById('c-name').value.trim();
   var email = document.getElementById('c-email').value.trim();
   var msg = document.getElementById('c-msg').value.trim();
-  document.getElementById('c-thanks').style.display = 'block';
-  location.href = 'mailto:support@felipecorsi.com?subject=' + encodeURIComponent('Corsi inquiry from ' + (name || 'the website'))
-    + '&body=' + encodeURIComponent(msg + '\n\n' + name + '\n' + email);
+  var thanks = document.getElementById('c-thanks');
+  thanks.style.display = 'block';
+  document.getElementById('c-name').value = '';
+  document.getElementById('c-email').value = '';
+  document.getElementById('c-msg').value = '';
+  formPost({ name: name, email: email, message: msg,
+             _subject: 'Corsi inquiry from ' + (name || 'the website'),
+             _replyto: email, _captcha: 'false', _template: 'table' },
+    function () { thanks.textContent = 'Please email support@felipecorsi.com and we will reply promptly.'; });
   return false;
 }
 
