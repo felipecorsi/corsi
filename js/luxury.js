@@ -354,8 +354,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var film = document.getElementById('film');
   if (film) {
     var filmWrap = film.parentElement;
+    var filmSeen = false;
     var fio = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
+        filmSeen = e.isIntersecting;
         if (e.isIntersecting) {
           /* always start clean from the first frame, never mid-fade */
           filmWrap.classList.remove('fading');
@@ -365,6 +367,14 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }, { threshold: 0.35 });
     fio.observe(film);
+
+    /* Low Power Mode blocks autoplay, but a muted play() inside any touch
+       counts as a user gesture and is allowed */
+    var filmKick = function () {
+      if (filmSeen && film.paused) film.play().catch(function () {});
+    };
+    document.addEventListener('touchstart', filmKick, { passive: true });
+    document.addEventListener('click', filmKick);
 
     film.addEventListener('timeupdate', function () {
       if (!film.duration) return;
