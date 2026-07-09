@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="https://use.typekit.net/ozh8iey.css">
-  <link rel="stylesheet" href="css/luxury.css?v=8">
+  <link rel="stylesheet" href="css/luxury.css?v=9">
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "Product", "name": "C Icon Pima Tee", "image": ["https://felipecorsi.com/images/pdp-pima.jpg", "https://felipecorsi.com/images/card-pima.jpg"], "description": "Corsi's rose Supima cotton C icon shirt is the perfect blend of modern-day elegance with traditional colors.", "brand": {"@type": "Brand", "name": "Corsi"}, "url": "https://felipecorsi.com/product-pima", "offers": {"@type": "Offer", "price": "260", "priceCurrency": "USD", "availability": "https://schema.org/OutOfStock", "url": "https://felipecorsi.com/product-pima"}}
   </script>
@@ -84,8 +84,8 @@
     <p id="bag-empty">Your bag is empty.</p>
     <div id="bag-foot">
       <div class="bag-subtotal"><span>Subtotal</span><span id="bag-subtotal">$0.00</span></div>
-      <button class="cta-solid" onclick="bagCheckout()">Checkout by Email</button>
-      <p class="bag-note">Orders are confirmed by email while Corsi prepares for launch.</p>
+      <button class="cta-solid" disabled>Sales Open Soon</button>
+      <p class="bag-note">Pieces are not yet for sale. Your bag is saved for the opening.</p>
     </div>
   </aside>
 
@@ -137,8 +137,8 @@
         </div>
       </details>
       <span class="size-error" id="size-error">Select a size</span>
-      <button class="cta-solid cta-round pdp-cta" disabled>Coming Soon</button>
-      <button class="advisor-link" onclick="notifyMe('C Icon Pima Tee')">Notify me when available</button>
+      <button class="cta-solid cta-round pdp-cta" onclick="addToBag('C Icon Pima Tee', 260)">Add to Bag</button>
+      <button class="advisor-link" onclick="notifyMe('C Icon Pima Tee')">Contact an Advisor</button>
       <p class="pdp-desc">Corsi's rose Supima cotton C icon shirt is the perfect blend of modern-day elegance with traditional colors.</p>
       <div class="pdp-details">
         <details>
@@ -205,6 +205,6 @@
     </div>
   </footer>
 
-  <script src="js/luxury.js?v=8"></script>
+  <script src="js/luxury.js?v=9"></script>
 </body>
 </html>

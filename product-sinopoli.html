@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="https://use.typekit.net/ozh8iey.css">
-  <link rel="stylesheet" href="css/luxury.css?v=8">
+  <link rel="stylesheet" href="css/luxury.css?v=9">
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "Product", "name": "Sinopoli Crest Tee", "image": ["https://felipecorsi.com/images/pdp-sinopoli.jpg", "https://felipecorsi.com/images/card-sinopoli.jpg"], "description": "Crafted from the finest Supima cotton, renowned for its exceptional softness and durability, this T-shirt offers unparalleled comfort and longevity.", "brand": {"@type": "Brand", "name": "Corsi"}, "url": "https://felipecorsi.com/product-sinopoli", "offers": {"@type": "Offer", "price": "280", "priceCurrency": "USD", "availability": "https://schema.org/OutOfStock", "url": "https://felipecorsi.com/product-sinopoli"}}
   </script>
@@ -84,8 +84,8 @@
     <p id="bag-empty">Your bag is empty.</p>
     <div id="bag-foot">
       <div class="bag-subtotal"><span>Subtotal</span><span id="bag-subtotal">$0.00</span></div>
-      <button class="cta-solid" onclick="bagCheckout()">Checkout by Email</button>
-      <p class="bag-note">Orders are confirmed by email while Corsi prepares for launch.</p>
+      <button class="cta-solid" disabled>Sales Open Soon</button>
+      <p class="bag-note">Pieces are not yet for sale. Your bag is saved for the opening.</p>
     </div>
   </aside>
 
@@ -137,8 +137,8 @@
         </div>
       </details>
       <span class="size-error" id="size-error">Select a size</span>
-      <button class="cta-solid cta-round pdp-cta" disabled>Coming Soon</button>
-      <button class="advisor-link" onclick="notifyMe('Sinopoli Crest Tee')">Notify me when available</button>
+      <button class="cta-solid cta-round pdp-cta" onclick="addToBag('Sinopoli Crest Tee', 280)">Add to Bag</button>
+      <button class="advisor-link" onclick="notifyMe('Sinopoli Crest Tee')">Contact an Advisor</button>
       <p class="pdp-desc">Crafted from the finest Supima cotton, renowned for its exceptional softness and durability, this T-shirt offers unparalleled comfort and longevity. Embellished with the emblem crest of Sinopoli, an Italian municipality, it proudly showcases the rich heritage and legacy of the town, infusing the garment with a regal charm that honors tradition.</p>
       <div class="pdp-details">
         <details>
@@ -205,6 +205,6 @@
     </div>
   </footer>
 
-  <script src="js/luxury.js?v=8"></script>
+  <script src="js/luxury.js?v=9"></script>
 </body>
 </html>

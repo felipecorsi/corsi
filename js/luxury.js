@@ -67,7 +67,7 @@ function searchRender(q) {
       + '<div class="icon-veil"><span>Discover</span></div>'
       + '</div>'
       + '<h3>' + p.name + '</h3>'
-      + '<div class="price">' + (p.stock ? '$' + p.price : 'Coming Soon') + '</div>'
+      + '<div class="price">$' + p.price + '</div>'
       + '</a>';
   }).join('');
   wishSync();
@@ -169,8 +169,8 @@ function addToBag(name, price) {
 }
 
 function notifyMe(name) {
-  location.href = 'mailto:support@felipecorsi.com?subject=' + encodeURIComponent('Notify me: ' + name)
-    + '&body=' + encodeURIComponent('Please let me know when the ' + name + ' is available again.\n');
+  location.href = 'mailto:support@felipecorsi.com?subject=' + encodeURIComponent('Corsi advisor: ' + name)
+    + '&body=' + encodeURIComponent('I would like to speak with an advisor about the ' + name + '.\n');
 }
 
 /* ---------- gift card ---------- */
