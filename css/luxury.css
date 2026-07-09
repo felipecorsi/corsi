@@ -1286,3 +1286,8 @@
     @media (max-width: 640px) {
       .h-right a[href="/wishlist"] { display: none; }
     }
+
+    /* phones: film fits the screen, whole frame visible */
+    @media (max-width: 640px) {
+      .film video { height: auto; min-height: 0; aspect-ratio: 1920 / 1012; }
+    }

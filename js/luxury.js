@@ -374,6 +374,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (filmSeen && film.paused) film.play().catch(function () {});
     };
     document.addEventListener('touchstart', filmKick, { passive: true });
+    document.addEventListener('touchend', filmKick, { passive: true });
     document.addEventListener('click', filmKick);
 
     film.addEventListener('timeupdate', function () {
