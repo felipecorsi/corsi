@@ -1289,10 +1289,20 @@
       .h-right a[href="/wishlist"] { display: none; }
     }
 
-    /* phones: film inset, gently cropped to a tall frame, no letterbox */
+    /* phones: film inset, tall frame, clean cover crop */
     @media (max-width: 640px) {
-      .film { width: calc(100vw - 40px); margin: 0 auto; }
-      .film video { width: 100%; height: 96vw; min-height: 0; object-fit: cover; }
+      .experience { background: transparent; padding: 4px 0 44px; }
+      .editorial .editorial-copy { order: 1; }
+      .editorial .editorial-media { order: 2; }
+      .editorial-media { min-height: 84vw; }
+      .editorial-media img { object-position: center top; }
+      .film { width: calc(100vw - 40px); height: 96vw; margin: 0 auto; }
+      .film video {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%; min-height: 0;
+        object-fit: cover;
+        background: transparent;
+      }
     }
     /* never show the iOS overlay play glyph */
     video::-webkit-media-controls-start-playback-button {
