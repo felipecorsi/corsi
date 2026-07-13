@@ -1310,10 +1310,3 @@
       display: none !important;
       -webkit-appearance: none;
     }
-
-    /* ---------- tissue band (packaging) ---------- */
-    .tissue { background: #fff; padding: 96px 48px 30px; }
-    .tissue img { display: block; width: 100%; max-width: 1440px; margin: 0 auto; }
-    @media (max-width: 640px) {
-      .tissue { padding: 84px 20px 10px; }
-    }
