@@ -428,3 +428,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+/* ---------- product image lightbox ---------- */
+
+document.addEventListener('click', function (e) {
+  var img = e.target.closest('.pdp-media img');
+  if (!img) return;
+  var lb = document.createElement('div');
+  lb.id = 'lightbox';
+  lb.innerHTML = '<img src="' + img.src + '" alt="">' +
+    '<button class="lightbox-close" aria-label="Close">&times;</button>';
+  lb.addEventListener('click', function () { lb.remove(); });
+  document.body.appendChild(lb);
+});
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    var lb = document.getElementById('lightbox');
+    if (lb) lb.remove();
+  }
+});

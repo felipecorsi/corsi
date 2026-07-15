@@ -1368,3 +1368,32 @@
     }
     .advisor-close:hover { color: var(--ink); }
     #adv-thanks { font-size: 14px; color: #4c4844; margin: 4px 0 0; }
+
+    /* ---------- lightbox ---------- */
+    .pdp-media img { cursor: zoom-in; }
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: var(--paper);
+      z-index: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+    #lightbox img {
+      max-width: 96vw;
+      max-height: 96vh;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 26px;
+      border: 0;
+      background: none;
+      font-size: 34px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--ink);
+    }
