@@ -169,8 +169,50 @@ function addToBag(name, price) {
 }
 
 function notifyMe(name) {
-  location.href = 'mailto:support@felipecorsi.com?subject=' + encodeURIComponent('Corsi advisor: ' + name)
-    + '&body=' + encodeURIComponent('I would like to speak with an advisor about the ' + name + '.\n');
+  var old = document.getElementById('advisor-overlay');
+  if (old) old.remove();
+  var ov = document.createElement('div');
+  ov.id = 'advisor-overlay';
+  ov.innerHTML =
+    '<div class="advisor-panel">' +
+      '<button class="advisor-close" aria-label="Close" onclick="document.getElementById(\'advisor-overlay\').remove()">&times;</button>' +
+      '<h3>Contact an Advisor</h3>' +
+      '<p class="advisor-sub">' + name.replace(/</g, '&lt;') + '</p>' +
+      '<form onsubmit="return advisorSend(event, \'' + name.replace(/'/g, "\\'") + '\')">' +
+        '<input type="text" id="adv-name" placeholder="Name" aria-label="Name" required>' +
+        '<input type="email" id="adv-email" placeholder="Email address" aria-label="Email address" required>' +
+        '<textarea id="adv-msg" rows="4" placeholder="How can we help?" aria-label="Message" required></textarea>' +
+        '<button type="submit" class="cta-solid" id="adv-submit">Send</button>' +
+        '<p id="adv-thanks" style="display:none">Thank you. An advisor will be in touch shortly.</p>' +
+      '</form>' +
+    '</div>';
+  ov.addEventListener('click', function (e) { if (e.target === ov) ov.remove(); });
+  document.body.appendChild(ov);
+}
+
+function advisorSend(e, product) {
+  e.preventDefault();
+  var btn = document.getElementById('adv-submit');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  fetch('https://formsubmit.co/ajax/felipe.corsi@outlook.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      _subject: 'Corsi advisor request: ' + product,
+      product: product,
+      name: document.getElementById('adv-name').value.trim(),
+      email: document.getElementById('adv-email').value.trim(),
+      message: document.getElementById('adv-msg').value.trim()
+    })
+  }).then(function (r) {
+    if (!r.ok) throw new Error('send failed');
+    document.getElementById('adv-thanks').style.display = 'block';
+    btn.style.display = 'none';
+  }).catch(function () {
+    btn.disabled = false; btn.textContent = 'Send';
+    alert('Could not send right now. Please try again.');
+  });
+  return false;
 }
 
 /* ---------- gift card ---------- */

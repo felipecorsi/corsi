@@ -1310,3 +1310,61 @@
       display: none !important;
       -webkit-appearance: none;
     }
+
+    /* ---------- advisor overlay ---------- */
+    #advisor-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 17, 16, .45);
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .advisor-panel {
+      position: relative;
+      background: var(--paper);
+      width: 100%;
+      max-width: 420px;
+      padding: 44px 40px 36px;
+      text-align: left;
+    }
+    .advisor-panel h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 24px;
+      margin: 0 0 6px;
+    }
+    .advisor-sub {
+      font-size: 13px;
+      color: var(--stone);
+      margin: 0 0 26px;
+    }
+    .advisor-panel input, .advisor-panel textarea {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid var(--hairline);
+      background: none;
+      padding: 13px 2px;
+      font: inherit;
+      font-size: 14px;
+      margin-bottom: 22px;
+      outline: none;
+      resize: vertical;
+      transition: border-color .3s ease;
+    }
+    .advisor-panel input:focus, .advisor-panel textarea:focus { border-color: var(--ink); }
+    .advisor-close {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      border: 0;
+      background: none;
+      font-size: 26px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--stone);
+    }
+    .advisor-close:hover { color: var(--ink); }
+    #adv-thanks { font-size: 14px; color: #4c4844; margin: 4px 0 0; }
