@@ -68,21 +68,28 @@
     <a class="nf-back" href="/">Return Home</a>
   </div>
   <script>
-    // Legacy Wix language URLs (/pt, /pt/..., /es, /en) still live in Google's index.
+    // Old Wix URLs (language prefixes like /zh/about, dead pages like /coming-soon-01)
+    // are still in Google's index. Forward visitors instead of dead-ending them.
     (function () {
-      var p = location.pathname.toLowerCase().replace(/\/+$/, '');
-      var m = p.match(/^\/(?:pt(?:-br)?|es|en)(\/.*)?$/);
-      if (!m) return;
-      var rest = (m[1] || '').replace(/\.html$/, '');
+      var p = location.pathname.toLowerCase().replace(/\/+$/, '').replace(/\.html$/, '');
+      var LOCALE = /^\/(?:en|es|pt(?:-br)?|it|fr|de|nl|sv|pl|tr|ru|he|ar|hi|ja|ko|zh(?:-(?:cn|tw|hans|hant))?)(\/|$)/;
+      var loc = p.match(LOCALE);
+      if (loc) p = p.slice(loc[0].length - (loc[1] === '/' ? 1 : 0)) || '/';
       var map = {
-        '/masculino': '/mens', '/homem': '/mens', '/men': '/mens',
-        '/feminino': '/womens', '/mulher': '/womens', '/women': '/womens',
-        '/sobre': '/about', '/about': '/about',
-        '/contato': '/contact', '/contact': '/contact',
+        '/masculino': '/mens', '/homem': '/mens', '/men': '/mens', '/uomo': '/mens',
+        '/feminino': '/womens', '/mulher': '/womens', '/women': '/womens', '/donna': '/womens',
+        '/sobre': '/about', '/about': '/about', '/chi-siamo': '/about',
+        '/contato': '/contact', '/contact': '/contact', '/contatti': '/contact',
         '/embalagem': '/packaging', '/packaging': '/packaging',
-        '/vale-presente': '/giftcard', '/giftcard': '/giftcard'
+        '/vale-presente': '/giftcard', '/giftcard': '/giftcard', '/gift-card': '/giftcard',
+        '/store-policy': '/shipping-returns', '/shipping-policy': '/shipping-returns',
+        '/payment-methods': '/shipping-returns', '/faq': '/shipping-returns',
+        '/privacy-policy': '/privacy', '/terms-and-conditions': '/terms',
+        '/shop': '/mens', '/store': '/mens'
       };
-      location.replace(map[rest] || '/');
+      if (map[p]) return location.replace(map[p]);
+      if (/^\/product-page\//.test(p)) return location.replace('/mens');
+      if (loc || /^\/(?:copy-of-|coming-soon)/.test(p)) location.replace('/');
     })();
   </script>
 </body>
