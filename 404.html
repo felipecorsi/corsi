@@ -67,5 +67,23 @@
     <p class="nf-line">This page does not exist</p>
     <a class="nf-back" href="/">Return Home</a>
   </div>
+  <script>
+    // Legacy Wix language URLs (/pt, /pt/..., /es, /en) still live in Google's index.
+    (function () {
+      var p = location.pathname.toLowerCase().replace(/\/+$/, '');
+      var m = p.match(/^\/(?:pt(?:-br)?|es|en)(\/.*)?$/);
+      if (!m) return;
+      var rest = (m[1] || '').replace(/\.html$/, '');
+      var map = {
+        '/masculino': '/mens', '/homem': '/mens', '/men': '/mens',
+        '/feminino': '/womens', '/mulher': '/womens', '/women': '/womens',
+        '/sobre': '/about', '/about': '/about',
+        '/contato': '/contact', '/contact': '/contact',
+        '/embalagem': '/packaging', '/packaging': '/packaging',
+        '/vale-presente': '/giftcard', '/giftcard': '/giftcard'
+      };
+      location.replace(map[rest] || '/');
+    })();
+  </script>
 </body>
 </html>
