@@ -359,6 +359,9 @@ document.addEventListener('DOMContentLoaded', function () {
   var bar = document.getElementById('top-bar');
   var clearTop = document.body.classList.contains('clear-top');
   var lastY = scrollY;
+  var hero = document.querySelector('.hero');
+  var heroBg = hero && hero.querySelector('.hero-bg');
+  var pulling = false;
   addEventListener('scroll', function () {
     var y = scrollY;
     /* backdrop: product pages go solid almost immediately, hero pages after the hero */
@@ -369,6 +372,24 @@ document.addEventListener('DOMContentLoaded', function () {
       bar.classList.add('no-anim');
       void bar.offsetHeight;
       bar.classList.remove('no-anim');
+    }
+    /* pull-down past the top (Safari / iPad / iPhone report negative scrollY):
+       the hero image grows up into the gap instead of showing white */
+    if (heroBg) {
+      if (y < 0) {
+        var p = -y, H = hero.offsetHeight;
+        hero.classList.add('pulling');
+        hero.style.setProperty('--pull', p + 'px');
+        heroBg.style.scale = 1 + p / H;
+        heroBg.style.translate = '0 ' + (-p / 2) + 'px';
+        pulling = true;
+      } else if (pulling) {
+        hero.classList.remove('pulling');
+        hero.style.removeProperty('--pull');
+        heroBg.style.scale = '';
+        heroBg.style.translate = '';
+        pulling = false;
+      }
     }
     /* product pages: header is part of the page (scrolls away naturally),
        comes back fixed on scroll up, back to normal at the top */

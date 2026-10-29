@@ -201,9 +201,6 @@
 
     /* ---------- hero ---------- */
 
-    /* no rubber-band past the top: the hero stays pinned, no white strip above it */
-    html:has(.hero) { overscroll-behavior-y: none; }
-
     .hero {
       position: relative;
       height: 100vh;
@@ -234,6 +231,10 @@
       inset: 0;
       background: linear-gradient(to bottom, rgba(10,9,8,.18) 0%, rgba(10,9,8,.02) 40%, rgba(10,9,8,.30) 100%);
     }
+
+    /* pull-down past the top (Safari / iPad / iPhone): the image grows up into the gap */
+    .hero.pulling { overflow: visible; clip-path: inset(-100vh 0 0 0); }
+    .hero.pulling::after { top: calc(-1 * var(--pull, 0px)); }
 
     /* ---------- reveal on scroll ---------- */
 
