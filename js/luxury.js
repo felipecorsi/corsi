@@ -363,6 +363,13 @@ document.addEventListener('DOMContentLoaded', function () {
     var y = scrollY;
     /* backdrop: product pages go solid almost immediately, hero pages after the hero */
     bar.classList.toggle('scrolled', y > (clearTop ? 24 : innerHeight * 0.82));
+    /* hero pages: a fast flick to the top lands before the .5s fade ends,
+       so drop the white backdrop instantly once we're at the top */
+    if (!clearTop && y <= 8) {
+      bar.classList.add('no-anim');
+      void bar.offsetHeight;
+      bar.classList.remove('no-anim');
+    }
     /* product pages: header is part of the page (scrolls away naturally),
        comes back fixed on scroll up, back to normal at the top */
     if (clearTop) {

@@ -201,6 +201,9 @@
 
     /* ---------- hero ---------- */
 
+    /* no rubber-band past the top: the hero stays pinned, no white strip above it */
+    html:has(.hero) { overscroll-behavior-y: none; }
+
     .hero {
       position: relative;
       height: 100vh;
